@@ -2,148 +2,167 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Yahya Bouih | Portfolio</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--navy:#1a2744;--gold:#c9a84c;--light:#f8f7f4;--gray:#6b7280;--white:#fff;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--light);color:#222;overflow-x:hidden;}
 
-  *{margin:0;padding:0;box-sizing:border-box;}
-  :root{
-    --navy:#1a2744;
-    --gold:#c9a84c;
-    --light:#f8f7f4;
-    --gray:#6b7280;
-    --white:#ffffff;
-  }
-  html{scroll-behavior:smooth;}
-  body{font-family:'Inter',sans-serif;background:var(--light);color:#222;}
+/* NAV */
+nav{position:fixed;top:0;width:100%;background:var(--navy);z-index:1000;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 20px rgba(0,0,0,.3);}
+.logo{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.3rem;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:all .3s;}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.nav-links{display:flex;gap:24px;list-style:none;}
+.nav-links a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.88rem;font-weight:500;transition:color .3s;}
+.nav-links a:hover{color:var(--gold);}
 
-  /* NAV */
-  nav{position:fixed;top:0;width:100%;background:var(--navy);z-index:100;padding:16px 40px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 20px rgba(0,0,0,.3);}
-  .logo{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.4rem;letter-spacing:1px;}
-  .nav-links{display:flex;gap:28px;list-style:none;}
-  .nav-links a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.9rem;font-weight:500;letter-spacing:.5px;transition:color .3s;}
-  .nav-links a:hover{color:var(--gold);}
+/* MOBILE NAV */
+@media(max-width:768px){
+  .hamburger{display:flex;}
+  .nav-links{display:none;position:fixed;top:52px;left:0;width:100%;background:var(--navy);flex-direction:column;padding:20px 24px;gap:0;box-shadow:0 4px 20px rgba(0,0,0,.3);}
+  .nav-links.open{display:flex;}
+  .nav-links li{border-bottom:1px solid rgba(255,255,255,.08);}
+  .nav-links a{display:block;padding:14px 0;font-size:1rem;}
+}
 
-  /* HERO */
-  #home{min-height:100vh;background:linear-gradient(135deg,var(--navy) 0%,#243560 60%,#1a3a5c 100%);display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 20px 60px;}
-  .hero-badge{display:inline-block;background:rgba(201,168,76,.15);border:1px solid var(--gold);color:var(--gold);padding:6px 18px;border-radius:20px;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px;}
-  .hero h1{font-family:'Playfair Display',serif;font-size:3.5rem;color:var(--white);line-height:1.2;margin-bottom:12px;}
-  .hero h1 span{color:var(--gold);}
-  .hero p{color:rgba(255,255,255,.7);font-size:1.05rem;max-width:520px;margin:0 auto 36px;line-height:1.7;}
-  .btn{display:inline-block;padding:13px 32px;border-radius:4px;font-weight:600;font-size:.9rem;cursor:pointer;transition:all .3s;text-decoration:none;}
-  .btn-gold{background:var(--gold);color:var(--navy);}
-  .btn-gold:hover{background:#b8923e;transform:translateY(-2px);}
-  .btn-outline{border:2px solid rgba(255,255,255,.4);color:var(--white);margin-left:12px;}
-  .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
-  .scroll-indicator{margin-top:60px;color:rgba(255,255,255,.4);font-size:.8rem;letter-spacing:2px;text-transform:uppercase;}
-  .scroll-dot{width:1px;height:40px;background:rgba(255,255,255,.2);margin:10px auto 0;position:relative;overflow:hidden;}
-  .scroll-dot::after{content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;background:var(--gold);animation:scrollAnim 1.5s infinite;}
-  @keyframes scrollAnim{to{top:200%;}}
+/* HERO */
+#home{min-height:100vh;background:linear-gradient(135deg,var(--navy) 0%,#243560 60%,#1a3a5c 100%);display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 20px 60px;}
+.hero-badge{display:inline-block;background:rgba(201,168,76,.15);border:1px solid var(--gold);color:var(--gold);padding:6px 18px;border-radius:20px;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,8vw,3.5rem);color:var(--white);line-height:1.2;margin-bottom:12px;}
+.hero h1 span{color:var(--gold);}
+.hero p{color:rgba(255,255,255,.7);font-size:clamp(.85rem,3vw,1.05rem);max-width:500px;margin:0 auto 32px;line-height:1.7;}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn{display:inline-block;padding:12px 28px;border-radius:4px;font-weight:600;font-size:.88rem;cursor:pointer;transition:all .3s;text-decoration:none;}
+.btn-gold{background:var(--gold);color:var(--navy);}
+.btn-gold:hover{background:#b8923e;}
+.btn-outline{border:2px solid rgba(255,255,255,.4);color:var(--white);}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+.social-icons{display:flex;justify-content:center;gap:14px;margin:28px 0 10px;}
+.social-icons a{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.75);transition:all .3s;text-decoration:none;}
+.social-icons a:hover{background:var(--gold);border-color:var(--gold);color:var(--navy);transform:translateY(-3px);}
+.social-icons svg{width:18px;height:18px;}
+.scroll-indicator{margin-top:20px;color:rgba(255,255,255,.4);font-size:.75rem;letter-spacing:2px;text-transform:uppercase;}background:rgba(255,255,255,.2);margin:10px auto 0;position:relative;overflow:hidden;}
+.scroll-dot::after{content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;background:var(--gold);animation:scrollAnim 1.5s infinite;}
+@keyframes scrollAnim{to{top:200%;}}
 
-  /* SECTIONS */
-  section{padding:90px 40px;}
-  .section-title{text-align:center;margin-bottom:60px;}
-  .section-title span{color:var(--gold);font-size:.8rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;display:block;margin-bottom:10px;}
-  .section-title h2{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--navy);}
-  .divider{width:50px;height:3px;background:var(--gold);margin:16px auto 0;}
-  .container{max-width:1000px;margin:0 auto;}
+/* SECTIONS */
+section{padding:clamp(60px,10vw,90px) clamp(16px,5vw,40px);}
+.section-title{text-align:center;margin-bottom:clamp(36px,6vw,60px);}
+.section-title span{color:var(--gold);font-size:.75rem;letter-spacing:3px;text-transform:uppercase;font-weight:600;display:block;margin-bottom:8px;}
+.section-title h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,5vw,2.2rem);color:var(--navy);}
+.divider{width:50px;height:3px;background:var(--gold);margin:14px auto 0;}
+.container{max-width:1000px;margin:0 auto;}
 
-  /* ABOUT */
-  #about{background:var(--white);}
-  .about-grid{display:grid;grid-template-columns:1fr 2fr;gap:50px;align-items:center;}
-  .about-img{text-align:center;}
-  .avatar{width:180px;height:180px;border-radius:50%;margin:0 auto;border:4px solid var(--gold);overflow:hidden;background:var(--navy);}
-  .avatar img{width:100%;height:100%;object-fit:cover;display:block;}
-  .about-text h3{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--navy);margin-bottom:14px;}
-  .about-text p{color:var(--gray);line-height:1.8;margin-bottom:16px;font-size:.95rem;}
-  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px;}
-  .info-item{display:flex;flex-direction:column;}
-  .info-item .label{font-size:.75rem;color:var(--gold);font-weight:600;letter-spacing:1px;text-transform:uppercase;}
-  .info-item .value{font-size:.9rem;color:var(--navy);font-weight:500;margin-top:2px;}
+/* ABOUT */
+#about{background:var(--white);}
+.about-grid{display:grid;grid-template-columns:1fr 2fr;gap:40px;align-items:center;}
+@media(max-width:640px){.about-grid{grid-template-columns:1fr;text-align:center;}}
+.avatar{width:clamp(130px,25vw,180px);height:clamp(130px,25vw,180px);border-radius:50%;margin:0 auto;border:4px solid var(--gold);overflow:hidden;}
+.avatar img{width:100%;height:100%;object-fit:cover;}
+.about-text h3{font-family:'Playfair Display',serif;font-size:clamp(1.2rem,4vw,1.6rem);color:var(--navy);margin-bottom:12px;}
+.about-text p{color:var(--gray);line-height:1.8;margin-bottom:14px;font-size:clamp(.85rem,2.5vw,.95rem);}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px;}
+@media(max-width:400px){.info-grid{grid-template-columns:1fr;}}
+.info-item .label{font-size:.72rem;color:var(--gold);font-weight:600;letter-spacing:1px;text-transform:uppercase;}
+.info-item .value{font-size:.88rem;color:var(--navy);font-weight:500;margin-top:2px;}
 
-  /* SKILLS */
-  #skills{background:var(--light);}
-  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;}
-  .skill-card{background:var(--white);border-radius:8px;padding:28px;box-shadow:0 2px 15px rgba(0,0,0,.06);border-top:3px solid var(--gold);}
-  .skill-card h4{font-size:1rem;font-weight:600;color:var(--navy);margin-bottom:20px;display:flex;align-items:center;gap:8px;}
-  .skill-card h4::before{content:'';display:inline-block;width:8px;height:8px;background:var(--gold);border-radius:50%;}
-  .skill-bar{margin-bottom:14px;}
-  .skill-name{display:flex;justify-content:space-between;font-size:.83rem;color:var(--gray);margin-bottom:5px;}
-  .bar-track{background:#e5e7eb;border-radius:10px;height:7px;}
-  .bar-fill{height:100%;border-radius:10px;background:linear-gradient(90deg,var(--navy),#2d4a8a);transition:width 1s ease;}
+/* SKILLS */
+#skills{background:var(--light);}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;}
+.skill-card{background:var(--white);border-radius:8px;padding:clamp(18px,4vw,28px);box-shadow:0 2px 15px rgba(0,0,0,.06);border-top:3px solid var(--gold);}
+.skill-card h4{font-size:.95rem;font-weight:600;color:var(--navy);margin-bottom:18px;display:flex;align-items:center;gap:8px;}
+.skill-card h4::before{content:'';display:inline-block;width:8px;height:8px;background:var(--gold);border-radius:50%;flex-shrink:0;}
+.skill-bar{margin-bottom:12px;}
+.skill-name{display:flex;justify-content:space-between;font-size:.82rem;color:var(--gray);margin-bottom:5px;}
+.bar-track{background:#e5e7eb;border-radius:10px;height:7px;}
+.bar-fill{height:100%;border-radius:10px;background:linear-gradient(90deg,var(--navy),#2d4a8a);}
 
-  /* PROJECTS */
-  #projects{background:var(--white);}
-  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;}
-  .project-card{border-radius:8px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);transition:transform .3s,box-shadow .3s;}
-  .project-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(0,0,0,.12);}
-  .project-header{background:linear-gradient(135deg,var(--navy),#243560);padding:30px 24px;position:relative;}
-  .project-icon{font-size:2rem;margin-bottom:10px;}
-  .project-header h3{font-family:'Playfair Display',serif;color:var(--white);font-size:1.15rem;}
-  .project-tag{position:absolute;top:16px;right:16px;background:rgba(201,168,76,.2);color:var(--gold);font-size:.7rem;padding:3px 10px;border-radius:20px;border:1px solid rgba(201,168,76,.4);}
-  .project-body{padding:20px 24px;background:var(--white);}
-  .project-body p{color:var(--gray);font-size:.88rem;line-height:1.7;}
-  .project-footer{padding:14px 24px;background:#f9fafb;border-top:1px solid #e5e7eb;display:flex;gap:8px;flex-wrap:wrap;}
-  .tag{background:#e8edf5;color:var(--navy);font-size:.72rem;padding:3px 10px;border-radius:20px;font-weight:500;}
+/* PROJECTS */
+#projects{background:var(--white);}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;}
+.project-card{border-radius:8px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08);transition:transform .3s,box-shadow .3s;}
+.project-card:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,.12);}
+.project-header{background:linear-gradient(135deg,var(--navy),#243560);padding:clamp(18px,4vw,28px) clamp(16px,4vw,24px);position:relative;}
+.project-icon{font-size:1.8rem;margin-bottom:8px;}
+.project-header h3{font-family:'Playfair Display',serif;color:var(--white);font-size:clamp(1rem,3vw,1.15rem);}
+.project-tag{position:absolute;top:14px;right:14px;background:rgba(201,168,76,.2);color:var(--gold);font-size:.68rem;padding:3px 10px;border-radius:20px;border:1px solid rgba(201,168,76,.4);}
+.project-body{padding:clamp(14px,4vw,20px) clamp(16px,4vw,24px);background:var(--white);}
+.project-body p{color:var(--gray);font-size:.86rem;line-height:1.7;}
+.project-footer{padding:12px clamp(16px,4vw,24px);background:#f9fafb;border-top:1px solid #e5e7eb;display:flex;gap:6px;flex-wrap:wrap;}
+.tag{background:#e8edf5;color:var(--navy);font-size:.7rem;padding:3px 10px;border-radius:20px;font-weight:500;}
 
-  /* CONTACT */
-  #contact{background:var(--navy);}
-  #contact .section-title h2{color:var(--white);}
-  #contact .section-title span{color:var(--gold);}
-  #contact .divider{background:var(--gold);}
-  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start;}
-  .contact-info p{color:rgba(255,255,255,.7);line-height:1.8;margin-bottom:28px;font-size:.95rem;}
-  .contact-item{display:flex;align-items:center;gap:14px;margin-bottom:18px;color:rgba(255,255,255,.8);font-size:.9rem;}
-  .contact-icon{width:36px;height:36px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
-  .contact-form{display:flex;flex-direction:column;gap:14px;}
-  .contact-form input,.contact-form textarea{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:6px;padding:13px 16px;color:var(--white);font-family:'Inter',sans-serif;font-size:.9rem;transition:border .3s;}
-  .contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(255,255,255,.4);}
-  .contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--gold);}
-  .contact-form textarea{resize:vertical;min-height:120px;}
-  .contact-form button{background:var(--gold);color:var(--navy);border:none;padding:13px;border-radius:6px;font-weight:700;font-size:.9rem;cursor:pointer;transition:background .3s;}
-  .contact-form button:hover{background:#b8923e;}
+/* CONTACT */
+#contact{background:var(--navy);}
+#contact .section-title h2{color:var(--white);}
+#contact .section-title span{color:var(--gold);}
+#contact .divider{background:var(--gold);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
+@media(max-width:640px){.contact-grid{grid-template-columns:1fr;}}
+.contact-info p{color:rgba(255,255,255,.7);line-height:1.8;margin-bottom:24px;font-size:.92rem;}
+.contact-item{display:flex;align-items:center;gap:12px;margin-bottom:16px;color:rgba(255,255,255,.8);font-size:.88rem;}
+.contact-icon{width:36px;height:36px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;}
+.contact-form{display:flex;flex-direction:column;gap:12px;}
+.contact-form input,.contact-form textarea{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:6px;padding:13px 16px;color:var(--white);font-family:'Inter',sans-serif;font-size:.9rem;transition:border .3s;width:100%;}
+.contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(255,255,255,.4);}
+.contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--gold);}
+.contact-form textarea{resize:vertical;min-height:110px;}
+.contact-form button{background:var(--gold);color:var(--navy);border:none;padding:13px;border-radius:6px;font-weight:700;font-size:.9rem;cursor:pointer;transition:background .3s;width:100%;}
+.contact-form button:hover{background:#b8923e;}
+#cf-status{text-align:center;font-size:.85rem;color:var(--gold);display:none;margin-top:4px;}
 
-  /* FOOTER */
-  footer{background:#0f1a30;text-align:center;padding:24px;color:rgba(255,255,255,.4);font-size:.82rem;}
-  footer span{color:var(--gold);}
-
-  @media(max-width:700px){
-    .hero h1{font-size:2.2rem;}
-    .about-grid,.contact-grid{grid-template-columns:1fr;}
-    nav{padding:14px 20px;}
-    .nav-links{gap:16px;}
-    section{padding:70px 20px;}
-  }
+footer{background:#0f1a30;text-align:center;padding:22px 16px;color:rgba(255,255,255,.4);font-size:.8rem;}
+footer span{color:var(--gold);}
 </style>
 </head>
 <body>
 
 <nav>
   <div class="logo">YB</div>
-  <ul class="nav-links">
-    <li><a href="#home">Accueil</a></li>
-    <li><a href="#about">À propos</a></li>
-    <li><a href="#skills">Compétences</a></li>
-    <li><a href="#projects">Projets</a></li>
-    <li><a href="#contact">Contact</a></li>
+  <div class="hamburger" id="ham" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home" onclick="closeMenu()">Accueil</a></li>
+    <li><a href="#about" onclick="closeMenu()">À propos</a></li>
+    <li><a href="#skills" onclick="closeMenu()">Compétences</a></li>
+    <li><a href="#projects" onclick="closeMenu()">Projets</a></li>
+    <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
 <section id="home">
   <div class="hero">
     <div class="hero-badge">Portfolio Professionnel</div>
     <h1>Yahya <span>Bouih</span></h1>
-    <p>Étudiant en Gestion — 1ère année à la Faculté des Sciences Juridiques, Économiques et Sociales · Souissi</p>
-    <a href="#projects" class="btn btn-gold">Voir mes projets</a>
-    <a href="#contact" class="btn btn-outline">Me contacter</a>
+    <p>Étudiant en Gestion — 1ère année · Faculté des Sciences Juridiques, Économiques et Sociales · Souissi</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-gold">Voir mes projets</a>
+      <a href="#contact" class="btn btn-outline">Me contacter</a>
+    </div>
+    <div class="social-icons">
+      <a href="https://instagram.com/y_bouih" target="_blank" title="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://facebook.com" target="_blank" title="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+      <a href="https://github.com/yahyabouih" target="_blank" title="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+      </a>
+      <a href="mailto:yahyabouih005@gmail.com" title="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </a>
+    </div>
     <div class="scroll-indicator">Défiler</div>
     <div class="scroll-dot"></div>
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="container">
     <div class="section-title">
@@ -152,12 +171,12 @@
       <div class="divider"></div>
     </div>
     <div class="about-grid">
-      <div class="about-img">
-        <div class="avatar"><img src="https://instagram.frba2-2.fna.fbcdn.net/v/t51.82787-19/573386010_17866676895471111_4785944490262807778_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.frba2-2.fna.fbcdn.net&_nc_cat=103&_nc_oc=Q6cZ2gE49grbuIFwzTYJuS1EszuXzSog4br5RxJ__m-Jyh9FCSBzSbKN_ORb0Y9YuFnrlcM&_nc_ohc=2PYbwdIA_y0Q7kNvwH5wvrM&_nc_gid=1L84I3WxF-gltF2qdhiZjw&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_Af62ZKJq_A37CCCxyqFo_jN8ikwRgnGG6uBmNWsyKr2eiA&oe=6A1FD31D&_nc_sid=7a9f4b" alt="Yahya Bouih"></div>
+      <div>
+        <div class="avatar"><img src="https://instagram.frba2-2.fna.fbcdn.net/v/t51.82787-19/573386010_17866676895471111_4785944490262807778_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.frba2-2.fna.fbcdn.net&_nc_cat=103&_nc_oc=Q6cZ2gE49grbuIFwzTYJuS1EszuXzSog4br5RxJ__m-Jyh9FCSBzSbKN_ORb0Y9YuFnrlcM&_nc_ohc=2PYbwdIA_y0Q7kNvwH5wvrM&_nc_gid=1L84I3WxF-gltF2qdhiZjw&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_Af62ZKJq_A37CCCxyqFo_jN8ikwRgnGG6uBmNWsyKr2eiA&oe=6A1FD31D&_nc_sid=7a9f4b" alt="Yahya Bouih" onerror="this.parentElement.innerHTML='<div style=\'width:100%;height:100%;background:var(--navy);display:flex;align-items:center;justify-content:center;font-family:serif;font-size:2.5rem;color:var(--gold)\'>YB</div>'"></div>
       </div>
       <div class="about-text">
         <h3>Bonjour, je suis Yahya Bouih</h3>
-        <p>Étudiant passionné en première année de la filière Gestion à la Faculté des Sciences Juridiques, Économiques et Sociales de Souissi. Je suis animé par le désir d'acquérir des connaissances solides en management, économie et finance.</p>
+        <p>Étudiant passionné en première année de la filière Gestion à la Faculté des Sciences Juridiques, Économiques et Sociales de Souissi. Animé par le désir d'acquérir des connaissances solides en management, économie et finance.</p>
         <p>Rigoureux, motivé et curieux, j'aspire à construire une carrière professionnelle dans le domaine de la gestion d'entreprise et du management stratégique.</p>
         <div class="info-grid">
           <div class="info-item"><span class="label">Filière</span><span class="value">Gestion — 1ère année</span></div>
@@ -170,7 +189,6 @@
   </div>
 </section>
 
-<!-- SKILLS -->
 <section id="skills">
   <div class="container">
     <div class="section-title">
@@ -201,7 +219,6 @@
   </div>
 </section>
 
-<!-- PROJECTS -->
 <section id="projects">
   <div class="container">
     <div class="section-title">
@@ -216,7 +233,7 @@
           <h3>Analyse Financière d'Entreprise</h3>
           <span class="project-tag">Gestion</span>
         </div>
-        <div class="project-body"><p>Étude et analyse des états financiers d'une PME marocaine dans le cadre d'un travail universitaire — bilan, compte de résultat et ratios clés.</p></div>
+        <div class="project-body"><p>Étude et analyse des états financiers d'une PME marocaine — bilan, compte de résultat et ratios clés.</p></div>
         <div class="project-footer"><span class="tag">Comptabilité</span><span class="tag">Excel</span><span class="tag">Analyse</span></div>
       </div>
       <div class="project-card">
@@ -225,7 +242,7 @@
           <h3>Étude de Marché</h3>
           <span class="project-tag">Marketing</span>
         </div>
-        <div class="project-body"><p>Réalisation d'une étude de marché sur un produit de consommation au Maroc — questionnaire, collecte de données et présentation des résultats.</p></div>
+        <div class="project-body"><p>Réalisation d'une étude de marché sur un produit de consommation au Maroc — questionnaire et présentation des résultats.</p></div>
         <div class="project-footer"><span class="tag">Recherche</span><span class="tag">PowerPoint</span><span class="tag">Statistiques</span></div>
       </div>
       <div class="project-card">
@@ -234,14 +251,13 @@
           <h3>Rapport sur l'Entrepreneuriat</h3>
           <span class="project-tag">Académique</span>
         </div>
-        <div class="project-body"><p>Rédaction d'un rapport académique sur l'entrepreneuriat au Maroc, les défis des startups et les politiques d'accompagnement public.</p></div>
+        <div class="project-body"><p>Rapport académique sur l'entrepreneuriat au Maroc, les défis des startups et les politiques d'accompagnement public.</p></div>
         <div class="project-footer"><span class="tag">Rédaction</span><span class="tag">Économie</span><span class="tag">Recherche</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="container">
     <div class="section-title">
@@ -251,7 +267,7 @@
     </div>
     <div class="contact-grid">
       <div class="contact-info">
-        <p>Je suis disponible pour toute opportunité de stage, projet collaboratif ou simplement pour échanger. N'hésitez pas à me contacter !</p>
+        <p>Je suis disponible pour toute opportunité de stage, projet collaboratif ou simplement pour échanger. N'hésitez pas !</p>
         <div class="contact-item"><div class="contact-icon">📍</div><span>Rabat, Maroc</span></div>
         <div class="contact-item"><div class="contact-icon">🎓</div><span>FSJES Souissi — Gestion S1</span></div>
         <div class="contact-item"><div class="contact-icon">📧</div><span>yahyabouih005@gmail.com</span></div>
@@ -263,28 +279,39 @@
         <input id="cf-subject" type="text" placeholder="Sujet">
         <textarea id="cf-msg" placeholder="Votre message..."></textarea>
         <button onclick="sendMail()">Envoyer le message ✉️</button>
-        <p id="cf-status" style="text-align:center;font-size:.85rem;color:var(--gold);display:none;">✅ Redirection vers votre messagerie...</p>
+        <p id="cf-status">✅ Redirection vers votre messagerie...</p>
       </div>
-      <script>
-        function sendMail(){
-          const n=document.getElementById('cf-name').value.trim();
-          const e=document.getElementById('cf-email').value.trim();
-          const s=document.getElementById('cf-subject').value.trim();
-          const m=document.getElementById('cf-msg').value.trim();
-          if(!n||!e||!s||!m){alert('Veuillez remplir tous les champs.');return;}
-          const body=`Nom: ${n}\nEmail: ${e}\n\nMessage:\n${m}`;
-          const mailto=`mailto:yahyabouih005@gmail.com?subject=${encodeURIComponent(s)}&body=${encodeURIComponent(body)}`;
-          window.location.href=mailto;
-          document.getElementById('cf-status').style.display='block';
-        }
-      </script>
     </div>
   </div>
 </section>
 
-<footer>
-  <p>© 2025 <span>Yahya Bouih</span> · Tous droits réservés · Conçu avec passion 🇲🇦</p>
-</footer>
+<footer><p>© 2025 <span>Yahya Bouih</span> · Tous droits réservés · Conçu avec passion 🇲🇦</p></footer>
 
+<script>
+function toggleMenu(){
+  document.getElementById('ham').classList.toggle('open');
+  document.getElementById('navLinks').classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('ham').classList.remove('open');
+  document.getElementById('navLinks').classList.remove('open');
+}
+function sendMail(){
+  const n=document.getElementById('cf-name').value.trim();
+  const e=document.getElementById('cf-email').value.trim();
+  const s=document.getElementById('cf-subject').value.trim();
+  const m=document.getElementById('cf-msg').value.trim();
+  if(!n||!e||!s||!m){alert('Veuillez remplir tous les champs.');return;}
+  const body=`Nom: ${n}\nEmail: ${e}\n\nMessage:\n${m}`;
+  window.location.href=`mailto:yahyabouih005@gmail.com?subject=${encodeURIComponent(s)}&body=${encodeURIComponent(body)}`;
+  document.getElementById('cf-status').style.display='block';
+}
+// Close menu on outside click
+document.addEventListener('click',e=>{
+  const nav=document.getElementById('navLinks');
+  const ham=document.getElementById('ham');
+  if(!nav.contains(e.target)&&!ham.contains(e.target)) closeMenu();
+});
+</script>
 </body>
 </html>
